@@ -34,6 +34,12 @@
   <div class="field form-group">
     <%= f.label "Photo" %><br>
     <%= f.file_field :avatar %>
+  <div class="field form-group">
+    <%= f.collection_select(:nationality_id, Nationality.all, :id, :country) %>
+      </div>
+  <div class="field form-group">
+    <%= f.collection_select(:diet_id, Diet.all, :id, :name) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
