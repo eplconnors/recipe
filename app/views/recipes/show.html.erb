@@ -24,6 +24,8 @@
   <strong>Instructions:</strong>
   <%= @recipe.instructions %>
 </p>
-
+<p>
+<%= image_tag @destination.avatar.url(:medium) %>
+</p>
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
