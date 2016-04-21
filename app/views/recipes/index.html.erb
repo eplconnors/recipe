@@ -10,17 +10,16 @@
         <%= link_to recipe.title, recipe %>
       </div>
       <div class="panel-body">
-        <p>by<strong> <%=link_to recipe.user.username, recipe_path(id: recipe.user.id) %></strong>
         <span class= "posted-at"><%= recipe.created_at.strftime('%m/%d/%Y at %l:%M%p') %></span></p>
         <p><%= truncate(recipe.instructions, length: 50, separator: " ") %> <br /> [<%= link_to 'Read More', recipe %>] </p>
       </div>
-      <% if current_user.id == recipe.user.id %>
+
       <%= image_tag recipe.avatar.url(:medium), class: "img-responsive" %>
       <div class='panel-footer'>
         <%= link_to 'Edit', edit_recipe_path(recipe), class: "btn btn-warning" %>
         <%= link_to 'Destroy', recipe, method: :delete, data: {confirm: 'Are you sure' }, class: 'btn btn-danger' %>
       </div>
-      <% end %>
+      
     </div>
   </div>
   <% end %>
