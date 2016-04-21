@@ -40,5 +40,5 @@ ActiveRecord::Schema.define(version: 20160421132714) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
   end
-
+  
 end
