@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :diets
+  resources :nationalities
+  resources :recipes
   get 'welcome/index'
 
   get 'welcome/about'
