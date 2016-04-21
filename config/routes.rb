@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'home' =>'welcome#index'
-
+  resources :diets
+  resources :nationalities
+  resources :recipes
   get 'about' => 'welcome#about'
 
   root 'welcome#index'
