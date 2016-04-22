@@ -4,4 +4,5 @@ class Recipe < ActiveRecord::Base
     belongs_to :nationality
     belongs_to :diet
     has_many :comments
+    belongs_to :user
 end

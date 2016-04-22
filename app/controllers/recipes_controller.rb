@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
+
   # GET /recipes
   # GET /recipes.json
   def index
@@ -15,6 +16,13 @@ class RecipesController < ApplicationController
     end
     @diets = Diet.all.order(:name).distinct
     @nationalities = Nationality.all.order(:country).distinct
+  end
+
+  def your_recipes
+  end
+
+  def user_recipes
+    @user = User.find(params[:id])
   end
 
   # GET /recipes/1
