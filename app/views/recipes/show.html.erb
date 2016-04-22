@@ -27,5 +27,15 @@
 <p>
 <%= image_tag @recipe.avatar.url(:medium) %>
 </p>
+
+<div>
+  <%= render 'comments/form' %>
+</div>
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
+
+<h4>Comments</h4>
+<% @recipe.comments.each do |comment| %>
+<p><strong><%= comment.author %></strong>said: </p>
+<p><%= comment.comment_entry %></p>
+<% end %>

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421150722) do
+ActiveRecord::Schema.define(version: 20160422172008) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "author"
+    t.text     "comment_entry"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "recipe_id"
+  end
 
   create_table "diets", force: :cascade do |t|
     t.string   "name"
@@ -33,12 +41,12 @@ ActiveRecord::Schema.define(version: 20160421150722) do
     t.text     "instructions"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "nationality_id"
+    t.integer  "diet_id"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.integer  "nationality_id"
-    t.integer  "diet_id"
   end
 
   create_table "users", force: :cascade do |t|
