@@ -4,7 +4,17 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
+    if params[:diet_id] == nil && params[:nationality_id] == nil
+      @recipes = Recipe.all
+    elsif params[:diet_id] != nil
+      @recipes = Recipe.where(diet_id: params[:diet_id])
+    elsif params[:nationality_id] != nil
+      @recipes = Recipe.where(nationality_id: params[:nationality_id])
+    elsif params[:diet_id] != nil && params[:nationality_id] != nil
+      @recipes = Recipe.where(diet_id: params[:diet_id], nationality_id: params[:nationality_id])
+    end
+    @diets = Diet.all.order(:name).distinct
+    @nationalities = Nationality.all.order(:country).distinct
   end
 
   # GET /recipes/1

@@ -2,6 +2,31 @@
 
 <h1>Recipes</h1>
 
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><%= link_to "All", recipes_path %></li>
+  <li role="presentation" class="dropdown">
+   <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+     Diets <span class="caret"></span>
+   </a>
+   <ul class="dropdown-menu">
+  <% @diets.each do |diet| %>
+  <li><%= link_to diet.name, recipes_path(diet_id: diet.id)%></li>
+  <% end %>
+  </ul>
+  </li>
+  <li role="presentation" class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+    Nationalies <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+  <% @nationalities.each do |nationality| %>
+  <li><%= link_to nationality.country, recipes_path(nationality_id: nationality.id)%></li>
+  <% end %>
+</ul>
+</li>
+</ul>
+
+
 <div class="row">
   <% @recipes.each do |recipe| %>
   <div class="col-md-6">
@@ -19,7 +44,7 @@
         <%= link_to 'Edit', edit_recipe_path(recipe), class: "btn btn-warning" %>
         <%= link_to 'Destroy', recipe, method: :delete, data: {confirm: 'Are you sure' }, class: 'btn btn-danger' %>
       </div>
-      
+
     </div>
   </div>
   <% end %>
