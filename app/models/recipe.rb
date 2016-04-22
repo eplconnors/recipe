@@ -3,4 +3,5 @@ class Recipe < ActiveRecord::Base
     validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
     belongs_to :nationality
     belongs_to :diet
+    has_many :comments
 end
