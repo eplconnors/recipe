@@ -6,3 +6,22 @@
 .cant-see-me {
     display: none;
 }
+
+.navbar-default{
+  background-color:#D1CAA1;
+  opacity: 1;
+  font-family:'Montserrat', sans-serif;
+  color:black;
+}
+
+.navbar-brand{
+  font-family:'Pacifico', cursive;
+}
+
+.navbar-nav{
+  font-family: 'Montserrat', sans-serif;
+}
+
+body{
+  background: #F9FFAD
+}
