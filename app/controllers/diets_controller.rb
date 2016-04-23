@@ -13,7 +13,7 @@ class DietsController < ApplicationController
   def show
   end
 
-  # GET /diets/new
+
   def new
     @diet = Diet.new
   end
