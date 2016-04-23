@@ -34,8 +34,9 @@
       <div class="panel-heading">
         <%= link_to recipe.title, recipe %>
       </div>
+      <div class="panel-body"> by <%= recipe.user.username %>
       <div class="panel-body">
-    
+
         <span class= "posted-at"><%= recipe.created_at.strftime('%m/%d/%Y at %l:%M%p') %></span></p>
         <p><%= truncate(recipe.instructions, length: 50, separator: " ") %> <br /> [<%= link_to 'Read More', recipe %>] </p>
       </div>

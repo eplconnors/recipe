@@ -4,7 +4,8 @@
   <strong>Title:</strong>
   <%= @recipe.title %>
 </p>
-
+<div class="panel-body">
+  by <strong><%= @recipe.user.username %></strong>
 <p>
   <strong>Servings:</strong>
   <%= @recipe.servings %>
@@ -36,6 +37,6 @@
 
 <h4>Comments</h4>
 <% @recipe.comments.each do |comment| %>
-<p><strong><%= comment.author %></strong>said: </p>
+<p><strong><%= comment.user.username %></strong>said: </p>
 <p><%= comment.comment_entry %></p>
 <% end %>
