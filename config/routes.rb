@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :nationalities
   resources :recipes
   get 'about' => 'welcome#about'
+  
+   get 'your_posts' => 'recipes#your_posts'
+  
+  get 'user_posts' => 'recipes#user_posts'
 
   root 'welcome#index'
 

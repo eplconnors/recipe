@@ -32,25 +32,27 @@
   <div class="col-md-6">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <%= link_to recipe.title, recipe %>
+        <%= recipe.title%>
       </div>
-      <div class="panel-body"> by <%= recipe.user.username %>
       <div class="panel-body">
-
-        <span class= "posted-at"><%= recipe.created_at.strftime('%m/%d/%Y at %l:%M%p') %></span></p>
-        <p><%= truncate(recipe.instructions, length: 50, separator: " ") %> <br /> [<%= link_to 'Read More', recipe %>] </p>
+      by <%= link_to recipe.user.username, user_posts_path(id: recipe.user.id) %>
+      <p>Posted at: <span class="posted-at"><%= recipe.created_at.strftime ('%m/%d/%Y at %l:%M%p') %></span></p>
+    <p>Servings: <%= recipe.servings %></p>
+            <p>Calories: <%= recipe.calories %></p>
+            <p>Ingredients: <%= recipe.ingredients %></p>
+            
+            <p><%= recipe.instructions[0..150] %>...<%= link_to "Read More", recipe %></p>
       </div>
 
       <%= image_tag recipe.avatar.url(:medium), class: "img-responsive" %>
-      <div class='panel-footer'>
+    
+   <% if current_user.id == recipe.user.id %>
+        <div class="panel-footer">
         <%= link_to 'Edit', edit_recipe_path(recipe), class: "btn btn-warning" %>
-        <%= link_to 'Destroy', recipe, method: :delete, data: {confirm: 'Are you sure' }, class: 'btn btn-danger' %>
+        <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
       </div>
-
+      <% end %>
     </div>
   </div>
   <% end %>
 </div>
-
-
-<%= link_to 'New Recipe', new_recipe_path %>
