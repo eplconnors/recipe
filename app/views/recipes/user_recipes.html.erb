@@ -1,0 +1,31 @@
+<h1><%=@user.username %>'s Page</h1>
+
+<div class="row">
+      <% @user.recipes.each do |recipe| %>
+<div class="col-md-12">
+  <div class="panel panel-default">
+  <div class="panel-heading">
+        <%= link_to recipe.title, forum %>
+    </div>
+  <div class="panel-body">
+  by <%= recipe.user.username %>
+  <p><span class="posted-at"><%= recipe.created_at.strftime ('%m/%d/%Y at %l:%M%p') %></span></p>
+       <p>Posted at: <span class='posted-at'>posted at: <%= receipe.created_at.strftime('%m/%d/%Y at %I:%M%p')%></span></p>
+       <p>Servings: <%= recipe.servings %></p>
+        <p>Calories: <%= recipe.calories %></p>
+        <p>Ingredients: <%= recipe.ingredients %></p>
+
+    <p><%= recipe.entry[0..250] %>...[<%= link_to "Read More", recipe %>] </p><br />
+    </div>
+    <% if current_user.id == forum.user.id %>
+   <div class="panel-footer">
+   <%= link_to 'Edit', edit_recipe_path(recipe), class: "btn btn-warning" %>
+   <%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+    <% end %>
+
+</div>

@@ -16,7 +16,7 @@
   </li>
   <li role="presentation" class="dropdown">
   <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-    Nationalies <span class="caret"></span>
+    Nationalities <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
   <% @nationalities.each do |nationality| %>
@@ -40,12 +40,12 @@
     <p>Servings: <%= recipe.servings %></p>
             <p>Calories: <%= recipe.calories %></p>
             <p>Ingredients: <%= recipe.ingredients %></p>
-            
+
             <p><%= recipe.instructions[0..150] %>...<%= link_to "Read More", recipe %></p>
       </div>
 
       <%= image_tag recipe.avatar.url(:medium), class: "img-responsive" %>
-    
+
    <% if current_user.id == recipe.user.id %>
         <div class="panel-footer">
         <%= link_to 'Edit', edit_recipe_path(recipe), class: "btn btn-warning" %>

@@ -1,42 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+<div class='panel panel-primary'>
+  <div class="panel-heading">
   <%= @recipe.title %>
-</p>
-<div class="panel-body">
-  by <strong><%= @recipe.user.username %></strong>
-<p>
-  <strong>Servings:</strong>
-  <%= @recipe.servings %>
-</p>
+  </div>
+  <div class="panel-body">
+    <p>by<strong> <%=link_to @recipe.user.username, user_posts_path(id: @recipe.user.id) %></strong>
+    <span class= "posted-at"><%= @recipe.created_at.strftime('%m/%d/%Y at %l:%M%p') %></span></p>
 
-<p>
-  <strong>Calories:</strong>
-  <%= @recipe.calories %>
-</p>
+    <p><%=@recipe.servings %>></p>
+    <p><%= @recipe.calories %></p>
+    <p><%= @recipe.ingredients %></p>
+    <p><%= @recipe.instructions %></p>
+    <p><%= image_tag @recipe.avatar.url(:medium) %></p>
+  </div>
+</div>
 
-<p>
-  <strong>Ingredients:</strong>
-  <%= @recipe.ingredients %>
-</p>
 
-<p>
-  <strong>Instructions:</strong>
-  <%= @recipe.instructions %>
-</p>
-<p>
-<%= image_tag @recipe.avatar.url(:medium) %>
-</p>
+
+<div class='panel panel-success'>
+  <div class="panel-heading">
+    Make a Comment
+  </div>
+  <div class="panel-body">
+    <%= render 'comments/form' %>
+  </div>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Comments</h4>
+  </div>
+  <% @recipe.comments.each do |comment| %>
+  <div class:"panel-body">
+    <p>by<strong> <%=link_to comment.user.username, user_posts_path(id: comment.user.id) %></strong>
+    <span class= "posted-at"><%= comment.created_at.strftime ('%m/%d/%Y at %l:%M%p') %></span></p>
+    <p><%= comment.comment_entry %></p>
+  </div>
+  <% end %>
+</div>
 
 <div>
-  <%= render 'comments/form' %>
+  <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+  <%= link_to 'Back', recipes_path %>
 </div>
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-<%= link_to 'Back', recipes_path %>
-
-<h4>Comments</h4>
-<% @recipe.comments.each do |comment| %>
-<p><strong><%= comment.user.username %></strong>said: </p>
-<p><%= comment.comment_entry %></p>
-<% end %>
