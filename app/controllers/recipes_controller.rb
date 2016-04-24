@@ -18,10 +18,10 @@ class RecipesController < ApplicationController
     @nationalities = Nationality.all.order(:country).distinct
   end
 
-  def your_recipes
+  def your_posts
   end
 
-  def user_recipes
+  def user_posts
     @user = User.find(params[:id])
   end
 
