@@ -25,3 +25,8 @@
 body{
   background: #F9FFAD
 }
+
+.resize{
+  height: 325px;
+  width: auto;
+}

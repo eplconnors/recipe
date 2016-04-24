@@ -1,0 +1,22 @@
+<h1>Your Profile Page</h1>
+<% current_user.recipes.each do |recipe| %>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+           <%= recipe.title %>
+        </div>
+        <div class="panel-body">
+            <p>Posted at: <span class="posted-at"><%= recipe.created_at.strftime ('%m/%d/%Y at %l:%M%p') %></span></p>
+            <p>Servings: <%= recipe.servings %></p>
+            <p>Calories: <%= recipe.calories %></p>
+            <p>Ingredients: <%= recipe.ingredients %></p>
+            <p><%= recipe.instructions[0..150] %>...<%= link_to "Read More", recipe %></p>
+        </div>
+
+    <div class="panel-footer">
+        <%= link_to 'Edit', edit_recipe_path(recipe), class: "btn btn-warning" %>
+        <%= link_to 'Destroy', recipe, method: :delete, data: {confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        </div>
+        </div>
+    </div>
+    <% end %>
